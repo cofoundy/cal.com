@@ -29,7 +29,7 @@ COPY .yarn ./.yarn
 COPY apps/api/v2 ./apps/api/v2
 COPY packages ./packages
 
-RUN yarn install --frozen-lockfile
+RUN yarn install --no-immutable
 
 # Build platform dependencies first (required by API)
 RUN yarn workspace @calcom/platform-constants build && \
