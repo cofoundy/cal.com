@@ -38,7 +38,9 @@ RUN yarn workspace @calcom/api-v2 run build
 # =============================================================================
 # Stage 2: Add API to the official Cal.com web app image
 # =============================================================================
-FROM calcom/cal.com:latest
+# Pinned 2026-11-05: same version prod runs (/api/version = 6.2.0) and this fork is at.
+# Upgrade = PR that bumps this tag+digest AND rebases the fork (api-builder compiles from repo source), with a Postgres backup first.
+FROM calcom/cal.com:v6.2.0@sha256:ace3bb1219fb7306585ab9f4d94d41af7ee064c343db0498173436bbe857bd49
 
 # Install procps for process management
 RUN apt-get update && apt-get install -y --no-install-recommends \
